@@ -76,8 +76,9 @@
         </div>
     </xsl:template>
 
+    <!-- ✅ UNDERLINE FIX: visible even without CSS -->
     <xsl:template match="tei:hi[@rend = 'u']">
-        <span class="tei-u"><xsl:apply-templates/></span>
+        <u><xsl:apply-templates/></u>
     </xsl:template>
 
     <xsl:template match="tei:hi[@rend = 'sup']">
