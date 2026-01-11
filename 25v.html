@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8".>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
@@ -14,6 +11,7 @@
     <title>Frankenstein Edition</title>
     <link href="style.css" rel="stylesheet">
   </head>
+
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">Frankenstein</a>
@@ -22,7 +20,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Pages
@@ -43,11 +41,26 @@
         </ul>
       </div>
     </nav>
+
     <div class="container-fluid">
       <h1>Frankenstein Volume I Draft in Chapter Sequence</h1>
-      <span style="visibility:hidden" id='page'>53</span>
-      <h2 id='folio'>25v</h2> <!-- you can style this h2 element differently, but you should keep the id="folio" and the elements value *unchanged* -->
+      <span style="visibility:hidden" id="page">53</span>
+      <h2 id="folio">25v</h2>
+
+      <!-- ✅ STATS AREA (was missing) -->
       <div id="stats"></div>
+
+      <div class="mb-3">
+        <button class="btn btn-outline-secondary btn-sm" onclick="toggleDeletions()">Toggle deletions</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="readingView()">Reading view</button>
+        <button class="btn btn-outline-secondary btn-sm" onclick="toggleNotes()">Toggle notes</button>
+      </div>
+
+      <div class="mb-3">
+        <a class="btn btn-outline-primary btn-sm" href="25r.html">← Previous</a>
+        <a class="btn btn-outline-primary btn-sm" href="index.html">Home</a>
+      </div>
+
       <div class="form-group">
         <select class="form-control" id="sel-hand" onChange="selectHand(event)">
           <option value="both">Both Hands</option>
@@ -55,15 +68,17 @@
           <option value="Percy">Percy Shelley's Hand Highlighted</option>
         </select>
       </div>
+
       <div class="row">
-        <div class="col-5">   
-            <div id="my-mirador"></div>
+        <div class="col-5">
+          <div id="my-mirador"></div>
         </div>
         <div class="col-7" id="text"></div>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="script.js"></script>
   </body>

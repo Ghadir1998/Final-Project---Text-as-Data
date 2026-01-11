@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8".>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <link href="style.css" rel="stylesheet">
 
     <title>Frankenstein Edition</title>
-    <link href="style.css" rel="stylesheet">
   </head>
+
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Frankenstein</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="index.html">Frankenstein</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <a class="nav-link" href="#">Home</a>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Pages
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -43,30 +48,81 @@
         </ul>
       </div>
     </nav>
-    <div class="container-fluid">
-      <h1>Mary Wollstonecraft Shelley - <i>Frankenstein</i></h1>
-      
+
+    <div class="container-fluid mt-4">
+      <h1>Mary Wollstonecraft Shelley – <i>Frankenstein</i></h1>
+      <p class="lead mb-4">
+        Mini digital edition of the Bodleian MS. Abinger c.56 manuscript draft,
+        created for <b>Text as Data</b> (University of Antwerp).
+      </p>
+
       <div class="row">
-        <div class="col-5">   
-            <p>Welcome to the mini digital edition of Mary Shelley's <i>Frankenstein</i>. Made as a project for Text as Data II, taught at the University of Antwerp.</p>
-          <p>Give here some context about the manuscript and the assignment by writing directly into the html, for example:</p>
+        <div class="col-lg-6">
+
+          <h3 class="home-section-title">About this edition</h3>
+          <p>
+            This mini digital edition presents a diplomatic transcription of ten manuscript pages
+            from Mary Shelley’s draft of <i>Frankenstein</i>. The text is encoded in TEI-XML
+            and transformed into HTML using XSLT. Manuscript images are displayed via IIIF
+            from the Bodleian Library.
+          </p>
+
+          <h3 class="home-section-title">Pages in this edition</h3>
+          <table class="table table-sm table-bordered w-auto">
+            <thead class="thead-light">
+              <tr>
+                <th>Folio</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>21r</td><td><a href="21r.html">Open</a></td></tr>
+              <tr><td>21v</td><td><a href="21v.html">Open</a></td></tr>
+              <tr><td>22r</td><td><a href="22r.html">Open</a></td></tr>
+              <tr><td>22v</td><td><a href="22v.html">Open</a></td></tr>
+              <tr><td>23r</td><td><a href="23r.html">Open</a></td></tr>
+              <tr><td>23v</td><td><a href="23v.html">Open</a></td></tr>
+              <tr><td>24r</td><td><a href="24r.html">Open</a></td></tr>
+              <tr><td>24v</td><td><a href="24v.html">Open</a></td></tr>
+              <tr><td>25r</td><td><a href="25r.html">Open</a></td></tr>
+              <tr><td>25v</td><td><a href="25v.html">Open</a></td></tr>
+            </tbody>
+          </table>
+
+          <h3 class="home-section-title">Resources</h3>
           <ul>
-            <li>A photograph of Mary Shelley and Percy Shelley;</li>
-            <li>A table/list with the pages in this digital edition;</li>
-            <li>A link to the Bodleian Library (https://www.bodleian.ox.ac.uk/home)</li>
-            <li>A link to the Shelley Godwin Archive, on which this digital edition was based (http://shelleygodwinarchive.org/)</li>
-            <li>Your name!</li>
-            <li>The licence, including link: (https://creativecommons.org/licenses/by-nc/4.0/) </li>
-            <li>A link to the encoding manual (https://bdmpmanual.uantwerpen.be/)</li>
+            <li><a href="https://www.bodleian.ox.ac.uk/home" target="_blank" rel="noopener">Bodleian Library</a></li>
+            <li><a href="http://shelleygodwinarchive.org/" target="_blank" rel="noopener">Shelley-Godwin Archive</a></li>
+            <li><a href="https://bdmpmanual.uantwerpen.be/" target="_blank" rel="noopener">BDMP Encoding Manual</a></li>
+            <li><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0 License</a></li>
           </ul>
-          <p><b>Style all the pages the way you want by diving into the css file.</b></p>
+
+          <h3 class="home-section-title">Created by</h3>
+          <p><strong>Ghadir Slim</strong></p>
+
         </div>
-        <div class="col-7" id="text"></div>
+
+        <div class="col-lg-6">
+          <h3 class="home-section-title text-center">Authors</h3>
+
+          <figure class="author-figure mb-4">
+            <img src="mary_shelley.jpg" alt="Mary Wollstonecraft Shelley" class="img-fluid rounded">
+            <figcaption><small>Mary Wollstonecraft Shelley (1797–1851)</small></figcaption>
+          </figure>
+
+          <figure class="author-figure mb-4">
+            <img src="percy_shelley.jpg" alt="Percy Bysshe Shelley" class="img-fluid rounded">
+            <figcaption><small>Percy Bysshe Shelley (1792–1822)</small></figcaption>
+          </figure>
+
+        </div>
       </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

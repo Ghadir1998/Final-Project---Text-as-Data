@@ -28,16 +28,16 @@
                     <li>Number of deletions:
                         <strong><xsl:value-of select="count(//tei:del)"/></strong>
                     </li>
-                    <li>Mary Shelley additions (#MWS):
+                    <li>Mary Shelley additions:
                         <strong><xsl:value-of select="count(//tei:add[@hand='#MWS'])"/></strong>
                     </li>
-                    <li>Mary Shelley deletions (#MWS):
+                    <li>Mary Shelley deletions:
                         <strong><xsl:value-of select="count(//tei:del[@hand='#MWS'])"/></strong>
                     </li>
-                    <li>Percy Shelley additions (#PBS):
+                    <li>Percy Shelley additions:
                         <strong><xsl:value-of select="count(//tei:add[@hand='#PBS'])"/></strong>
                     </li>
-                    <li>Percy Shelley deletions (#PBS):
+                    <li>Percy Shelley deletions:
                         <strong><xsl:value-of select="count(//tei:del[@hand='#PBS'])"/></strong>
                     </li>
                 </ul>

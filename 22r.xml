@@ -126,7 +126,6 @@
           could not be<lb/>
         </p>
 
-        <!-- Editorial notes moved outside the running text/additions to avoid breaking XSLT -->
         <note>Editorial note: '^' is encoded as &lt;metamark function="insertion"&gt; to reflect the caret insertion mark.</note>
         <note>Editorial note: '-' marks are encoded as &lt;metamark function="dash"&gt; (thick line in the manuscript).</note>
 

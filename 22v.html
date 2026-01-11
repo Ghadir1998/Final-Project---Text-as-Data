@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8".>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://unpkg.com/mirador@latest/dist/mirador.min.js"></script>
@@ -46,8 +44,23 @@
     <div class="container-fluid">
       <h1>Frankenstein Volume I Draft in Chapter Sequence</h1>
       <span style="visibility:hidden" id='page'>47</span>
-      <h2 id='folio'>22v</h2> <!-- you can style this h2 element differently, but you should keep the id="folio" and the elements value *unchanged* -->
+      <h2 id='folio'>22v</h2> 
       <div id="stats"></div>
+      <div class="mb-3">
+  <button class="btn btn-outline-secondary btn-sm" onclick="toggleDeletions()">
+    Toggle deletions
+  </button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="readingView()">
+    Reading view
+  </button>
+  <button class="btn btn-outline-secondary btn-sm" onclick="toggleNotes()">
+  Toggle notes
+</button>
+</div>
+<div class="mb-3">
+  <a class="btn btn-outline-primary btn-sm" href="22r.html">← Previous</a>
+  <a class="btn btn-outline-primary btn-sm" href="23r.html">Next →</a>
+</div>
       <div class="form-group">
         <select class="form-control" id="sel-hand" onChange="selectHand(event)">
           <option value="both">Both Hands</option>
