@@ -4,31 +4,59 @@
     xmlns:tei="http://www.tei-c.org/ns/1.0"
     exclude-result-prefixes="xs tei"
     version="2.0">
-    
-    <!-- <xsl:output method="xml" omit-xml-declaration="yes" indent="yes" /> -->
 
-    
     <xsl:template match="tei:TEI">
-                     <div class="row">
-                         <div class="col">
-                             <h4>About the manuscript page:</h4>
-                             <xsl:value-of select="//tei:sourceDesc"/>
-                             <xsl:value-of select="//tei:licence"/> <!-- You can change the way the metadata is visualised as well-->
-                         </div>
-                         <div class="col">
-                            <ul> 
-                                <li>Total number of modifications: 
-                                    <xsl:value-of select="count(//tei:del|//tei:add)" /> <!-- Counts all the add and del elements, and puts it in a list item -->
-                                </li>
-                                <li>Number of additions: 
-                                    <!-- count the additions only -->
-                                </li>
-                                <!-- add other list items in which you count things, such as the modifications made by Percy -->
-                            </ul>
-                        </div>
-                     </div>
+        <div class="row">
+            <div class="col">
+                <h4>About the manuscript page:</h4>
+                <div class="meta-block">
+                    <xsl:value-of select="normalize-space(string(//tei:sourceDesc))"/>
+                </div>
+                <div class="meta-block">
+                    <xsl:value-of select="normalize-space(string(//tei:licence))"/>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>Statistics:</h4>
+                <ul>
+                    <li>Total number of modifications (adds + dels):
+                        <strong><xsl:value-of select="count(//tei:del | //tei:add)"/></strong>
+                    </li>
+
+                    <li>Number of additions:
+                        <strong><xsl:value-of select="count(//tei:add)"/></strong>
+                    </li>
+
+                    <li>Number of deletions:
+                        <strong><xsl:value-of select="count(//tei:del)"/></strong>
+                    </li>
+
+                    <li>Mary Shelley additions (#MWS):
+                        <strong><xsl:value-of select="count(//tei:add[@hand='#MWS'])"/></strong>
+                    </li>
+
+                    <li>Mary Shelley deletions (#MWS):
+                        <strong><xsl:value-of select="count(//tei:del[@hand='#MWS'])"/></strong>
+                    </li>
+
+                    <li>Percy Shelley additions (#PBS):
+                        <strong><xsl:value-of select="count(//tei:add[@hand='#PBS'])"/></strong>
+                    </li>
+
+                    <li>Percy Shelley deletions (#PBS):
+                        <strong><xsl:value-of select="count(//tei:del[@hand='#PBS'])"/></strong>
+                    </li>
+
+                    <li>Total words (rough):
+                        <strong>
+                            <xsl:value-of select="count(tokenize(normalize-space(string(//tei:body)), '\s+'))"/>
+                        </strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <hr/>
     </xsl:template>
-    
 
 </xsl:stylesheet>
