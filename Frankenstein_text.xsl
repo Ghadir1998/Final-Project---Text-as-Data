@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:tei="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="xs tei"
-    version="2.0">
+    exclude-result-prefixes="tei"
+    version="1.0">
 
     <xsl:template match="tei:teiHeader"/>
 
@@ -59,21 +58,15 @@
     </xsl:template>
 
     <xsl:template match="tei:l">
-        <div class="tei-line">
-            <xsl:apply-templates/>
-        </div>
+        <div class="tei-line"><xsl:apply-templates/></div>
     </xsl:template>
 
     <xsl:template match="tei:list">
-        <div class="tei-list">
-            <xsl:apply-templates/>
-        </div>
+        <div class="tei-list"><xsl:apply-templates/></div>
     </xsl:template>
 
     <xsl:template match="tei:item">
-        <div class="tei-item">
-            <xsl:apply-templates/>
-        </div>
+        <div class="tei-item"><xsl:apply-templates/></div>
     </xsl:template>
 
     <xsl:template match="tei:hi[@rend = 'u']">
@@ -81,7 +74,7 @@
     </xsl:template>
 
     <xsl:template match="tei:hi[@rend = 'sup']">
-        <sup class="tei-sup"><xsl:apply-templates/></sup>
+        <sup><xsl:apply-templates/></sup>
     </xsl:template>
 
     <xsl:template match="tei:hi[@rend = 'circled']">
@@ -90,12 +83,6 @@
 
     <xsl:template match="tei:metamark">
         <span class="tei-metamark">
-            <xsl:attribute name="data-function">
-                <xsl:value-of select="@function"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-hand">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
             <xsl:apply-templates/>
         </span>
     </xsl:template>
@@ -114,82 +101,54 @@
 
     <xsl:template match="tei:choice">
         <span class="tei-choice">
-            <xsl:attribute name="title">
-                <xsl:text>original: </xsl:text>
-                <xsl:value-of select="normalize-space(tei:sic)"/>
-            </xsl:attribute>
             <xsl:value-of select="tei:corr"/>
         </span>
     </xsl:template>
 
     <xsl:template match="tei:del">
         <del class="tei-del">
-            <xsl:attribute name="data-hand">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-deltype">
-                <xsl:value-of select="@type"/>
-            </xsl:attribute>
+            <xsl:attribute name="data-hand"><xsl:value-of select="@hand"/></xsl:attribute>
+            <xsl:attribute name="data-deltype"><xsl:value-of select="@type"/></xsl:attribute>
             <xsl:apply-templates/>
         </del>
     </xsl:template>
 
     <xsl:template match="tei:add[@place = 'marginleft']">
         <span class="marginAdd tei-add" data-place="marginleft">
-            <xsl:attribute name="data-hand">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-addtype">
-                <xsl:value-of select="@type"/>
-            </xsl:attribute>
+            <xsl:attribute name="data-hand"><xsl:value-of select="@hand"/></xsl:attribute>
+            <xsl:attribute name="data-addtype"><xsl:value-of select="@type"/></xsl:attribute>
             <xsl:apply-templates/>
         </span>
     </xsl:template>
 
     <xsl:template match="tei:add[@place = 'supralinear']">
         <sup class="supraAdd tei-add" data-place="supralinear">
-            <xsl:attribute name="data-hand">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-addtype">
-                <xsl:value-of select="@type"/>
-            </xsl:attribute>
+            <xsl:attribute name="data-hand"><xsl:value-of select="@hand"/></xsl:attribute>
+            <xsl:attribute name="data-addtype"><xsl:value-of select="@type"/></xsl:attribute>
             <xsl:apply-templates/>
         </sup>
     </xsl:template>
 
     <xsl:template match="tei:add[@place = 'overwritten']">
         <span class="tei-add tei-add-overwritten" data-place="overwritten">
-            <xsl:attribute name="data-hand">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-addtype">
-                <xsl:value-of select="@type"/>
-            </xsl:attribute>
+            <xsl:attribute name="data-hand"><xsl:value-of select="@hand"/></xsl:attribute>
+            <xsl:attribute name="data-addtype"><xsl:value-of select="@type"/></xsl:attribute>
             <xsl:apply-templates/>
         </span>
     </xsl:template>
 
     <xsl:template match="tei:add[@place = 'intralinear']">
         <span class="tei-add tei-add-inline" data-place="intralinear">
-            <xsl:attribute name="data-hand">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-addtype">
-                <xsl:value-of select="@type"/>
-            </xsl:attribute>
+            <xsl:attribute name="data-hand"><xsl:value-of select="@hand"/></xsl:attribute>
+            <xsl:attribute name="data-addtype"><xsl:value-of select="@type"/></xsl:attribute>
             <xsl:apply-templates/>
         </span>
     </xsl:template>
 
     <xsl:template match="tei:add">
         <span class="tei-add" data-place="other">
-            <xsl:attribute name="data-hand">
-                <xsl:value-of select="@hand"/>
-            </xsl:attribute>
-            <xsl:attribute name="data-addtype">
-                <xsl:value-of select="@type"/>
-            </xsl:attribute>
+            <xsl:attribute name="data-hand"><xsl:value-of select="@hand"/></xsl:attribute>
+            <xsl:attribute name="data-addtype"><xsl:value-of select="@type"/></xsl:attribute>
             <xsl:apply-templates/>
         </span>
     </xsl:template>

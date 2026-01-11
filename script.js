@@ -1,55 +1,81 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:tei="http://www.tei-c.org/ns/1.0"
-    exclude-result-prefixes="tei"
-    version="1.0">
+let tei = document.getElementById("folio");
+let tei_xml = tei.innerHTML;
+let folio_xml = tei_xml + ".xml";
 
-    <xsl:template match="tei:TEI">
-        <div class="row">
-            <div class="col">
-                <h4>About the manuscript page:</h4>
-                <div class="meta-block">
-                    <xsl:value-of select="normalize-space(string(//tei:sourceDesc))"/>
-                </div>
-                <div class="meta-block">
-                    <xsl:value-of select="normalize-space(string(//tei:licence))"/>
-                </div>
-            </div>
+let page = document.getElementById("page");
+let number = Number(page.innerHTML);
 
-            <div class="col">
-                <h4>Statistics:</h4>
-                <ul>
-                    <li>Total number of modifications (adds + dels):
-                        <strong><xsl:value-of select="count(//tei:del | //tei:add)"/></strong>
-                    </li>
+var mirador = Mirador.viewer({
+  id: "my-mirador",
+  manifests: {
+    "https://iiif.bodleian.ox.ac.uk/iiif/manifest/53fd0f29-d482-46e1-aa9d-37829b49987d.json": {
+      provider: "Bodleian Library, University of Oxford"
+    }
+  },
+  window: {
+    allowClose: false,
+    allowWindowSideBar: true,
+    allowTopMenuButton: false,
+    allowMaximize: false,
+    hideWindowTitle: true,
+    panels: {
+      info: false,
+      attribution: false,
+      canvas: true,
+      annotations: false,
+      search: false,
+      layers: false,
+    }
+  },
+  workspaceControlPanel: { enabled: false },
+  windows: [{
+    loadedManifest: "https://iiif.bodleian.ox.ac.uk/iiif/manifest/53fd0f29-d482-46e1-aa9d-37829b49987d.json",
+    canvasIndex: number,
+    thumbnailNavigationPosition: 'off'
+  }]
+});
 
-                    <li>Number of additions:
-                        <strong><xsl:value-of select="count(//tei:add)"/></strong>
-                    </li>
+async function applyXSLT(xmlPath, xslPath, targetId) {
+  const target = document.getElementById(targetId);
 
-                    <li>Number of deletions:
-                        <strong><xsl:value-of select="count(//tei:del)"/></strong>
-                    </li>
+  try {
+    const [xmlString, xslString] = await Promise.all([
+      fetch(xmlPath + "?v=" + Date.now()).then(r => r.text()),
+      fetch(xslPath + "?v=" + Date.now()).then(r => r.text())
+    ]);
 
-                    <li>Mary Shelley additions (#MWS):
-                        <strong><xsl:value-of select="count(//tei:add[@hand='#MWS'])"/></strong>
-                    </li>
+    const parser = new DOMParser();
+    const xml_doc = parser.parseFromString(xmlString, "text/xml");
+    const xsl_doc = parser.parseFromString(xslString, "text/xml");
 
-                    <li>Mary Shelley deletions (#MWS):
-                        <strong><xsl:value-of select="count(//tei:del[@hand='#MWS'])"/></strong>
-                    </li>
+    const xsltProcessor = new XSLTProcessor();
+    xsltProcessor.importStylesheet(xsl_doc);
 
-                    <li>Percy Shelley additions (#PBS):
-                        <strong><xsl:value-of select="count(//tei:add[@hand='#PBS'])"/></strong>
-                    </li>
+    const resultFragment = xsltProcessor.transformToFragment(xml_doc, document);
 
-                    <li>Percy Shelley deletions (#PBS):
-                        <strong><xsl:value-of select="count(//tei:del[@hand='#PBS'])"/></strong>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <hr/>
-    </xsl:template>
+    // Only clear AFTER we successfully have a result
+    target.innerHTML = "";
+    target.appendChild(resultFragment);
 
-</xsl:stylesheet>
+  } catch (err) {
+    console.error(`XSLT error for ${targetId}:`, err);
+    target.innerHTML = `<div style="padding:10px;border:1px solid #c00;color:#c00;">
+      Error loading ${targetId}. Open Console (F12) for details.
+    </div>`;
+  }
+}
+
+function documentLoader() {
+  applyXSLT(folio_xml, "Frankenstein_text.xsl", "text");
+}
+
+function statsLoader() {
+  applyXSLT(folio_xml, "Frankenstein_meta.xsl", "stats");
+}
+
+documentLoader();
+statsLoader();
+
+function selectHand(event) {
+  // we will implement this AFTER everything displays correctly
+}
